@@ -1,5 +1,7 @@
-//paremetros
 #include "path.h"
+
+
+/* ---------------------------------------------organizando parametros------------------------------------------------------ */
 
 void lerparametros(int argc, char* argv[], char* dirEntrada, char* geonome,  char* dirSaida, char* qry){
 
@@ -29,4 +31,4 @@ int j=0;
         }
     }
 }
-
+/* -------------------------------------------------------------------------------------------------------------------- */

@@ -28,7 +28,7 @@ char* qrynome;        //nome do arquivo qry
 char* dirSaida;       //diretorio de saida
 char* tlista;         //tipo de lista
 
-lerparametros(dirEntrada, geonome, qrynome, dirSaida, tlista);  //função que lê os parametros(vai para path.c)
+void lerparametros(argc,argv, dirEntrada, geonome, dirSaida, qry);  //função que lê os parametros(vai para path.c)
 
 void* lista = crialista();  //cria a lista de acordo com o tipo de lista
 
