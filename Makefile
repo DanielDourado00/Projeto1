@@ -1,13 +1,13 @@
 EXEC = gcc
 CFLAGS = -std=c99 -fstack-protector-all -g
-projeto1 = ted
+PROJ_NAME = ted
 
 clear:
 	rm -f *.o
-	rm -f $(projeto1)
+	rm -f $(PROJ_NAME)
 
-	$(projeto1): main.o circulo.o retangulo.o linha.o  qry.o svg.o paths.o
-		$(EXEC) $(CFLAGS) main.o circulo.o retangulo.o linha.o qry.o svg.o paths.o -o $(projeto1) -lm
+	$(PROJ_NAME): main.o circulo.o retangulo.o linha.o  qry.o svg.o paths.o
+		$(EXEC) $(CFLAGS) main.o circulo.o retangulo.o linha.o qry.o svg.o paths.o -o $(PROJ_NAME) -lm
 
 	main.o: main.c
 	$(EXEC) $(CFLAGS) -c main.c

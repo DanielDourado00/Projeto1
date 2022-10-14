@@ -9,6 +9,7 @@ typedef struct circulo {
     char corprench[20];
 } circulo;
 
+
 void criacirculo(int i, double x, double y, double raio, char corborda[], char corprench[]) {
     circulo* c = (circulo*) malloc(sizeof(circulo));
     c->i = i;
