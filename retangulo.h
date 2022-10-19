@@ -3,20 +3,22 @@
 #ifndef RETANGULO_H
 #define RETANGULO_H
 
+typedef void* Rectangle;
+
 void criaretangulo(int i, double x, double y, double w, double h, char corborda[], char corprench[]);
 
-void criaretanguloi(retangulo* r, int i);
+void criaretanguloi(Rectangle r, int i);
 
-void criaretangulox(retangulo* r, double x);
+void criaretangulox(Rectangle r, double x);
 
-void criaretanguloy(retangulo* r, double y);
+void criaretanguloy(Rectangle r, double y);
 
-void criaretangulow(retangulo* r, double w);
+void criaretangulow(Rectangle r, double w);
 
-void criaretanguloh(retangulo* r, double h);
+void criaretanguloh(Rectangle r, double h);
 
-void criaretangulocorborda(retangulo* r, char corborda[]);
+void criaretangulocorborda(Rectangle r, char corborda[]);
 
-void criaretangulocorprench(retangulo* r, char corprench[]);
+void criaretangulocorprench(Rectangle r, char corprench[]);
 
 #endif

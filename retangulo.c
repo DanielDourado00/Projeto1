@@ -8,10 +8,10 @@ typedef struct retangulo {
     double h;                  //altura
     char corborda[20];         //cor da borda
     char corprench[20];        //cor de preenchimento
-} retangulo;
+} Retangulo;
 
 void criaretangulo(int i, double x, double y, double w, double h, char corborda[], char corprench[]) {
-    retangulo* r = (retangulo*) malloc(sizeof(retangulo));
+    Retangulo* r = (Retangulo*) malloc(sizeof(Retangulo));
     r->i = i;
     r->x = x;
     r->y = y;
@@ -21,31 +21,38 @@ void criaretangulo(int i, double x, double y, double w, double h, char corborda[
     strcpy(r->corprench, corprench);
 }
 
-void criaretanguloi(retangulo* r, int i) {         //cria identificador
+void criaretanguloi(Rectangle rect, int i) {         //cria identificador
+    Retangulo* r = (Retangulo*) rect;
     r->i = i;
 }
 
-void criaretangulox(retangulo* r, double x) {       //cria coordenada x
+void criaretangulox(Rectangle rect, double x) {       //cria coordenada x
+    Retangulo* r = (Retangulo*) rect;
     r->x = x;
 }
 
-void criaretanguloy(retangulo* r, double y) {       //cria coordenada y
+void criaretanguloy(Rectangle rect, double y) {       //cria coordenada y
+    Retangulo* r = (Retangulo*) rect;
     r->y = y;
 }
 
-void criaretangulow(retangulo* r, double w) {       //cria largura
+void criaretangulow(Rectangle rect, double w) {       //cria largura
+    Retangulo* r = (Retangulo*) rect;
     r->w = w;
 }
 
-void criaretanguloh(retangulo* r, double h) {       //cria altura
+void criaretanguloh(Rectangle rect, double h) {       //cria altura
+    Retangulo* r = (Retangulo*) rect;
     r->h = h;
 }
 
-void criaretangulocorborda(retangulo* r, char corborda[]) {    //cria cor da borda
+void criaretangulocorborda(Rectangle rect, char corborda[]) {    //cria cor da borda
+    Retangulo* r = (Retangulo*) rect;
     strcpy(r->corborda, corborda);
 }
 
-void criaretangulocorprench(retangulo* r, char corprench[]) {  //cria cor de preenchimento
+void criaretangulocorprench(Rectangle rect, char corprench[]) {  //cria cor de preenchimento
+    Retangulo* r = (Retangulo*) rect;
     strcpy(r->corprench, corprench);
 }
 

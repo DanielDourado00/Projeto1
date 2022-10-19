@@ -19,7 +19,7 @@ typedef struct conteudo {          //estrutura do conteudo
 /* aloc dinamica = aumento o tamanho e preencho de uma maneira indeterminada
  */
 void* crialista() {                //cria a lista
-    conteudo* c = (conteudo*) calloc(sizeof(conteudo));         //aloca espaço para a lista
+    conteudo* c = (conteudo*) calloc(1, sizeof(conteudo));         //aloca espaço para a lista
     c->inicio = NULL;                                          //inicia o começo da lista como NULL 
     c->tam = 0;                                                //inicia o tamanho da lista como 0
     c->fim = NULL;                                             //inicia o fim da lista como NULL
@@ -28,7 +28,7 @@ void* crialista() {                //cria a lista
 
 void* inserelista (void* lista, void* info) {      //insere um elemento na lista
     conteudo* c = (conteudo*) lista;               //cria um conteudo que recebe a lista
-    no* n = (no*) calloc(sizeof(no));              //cria um nó que recebe o espaço alocado para o nó
+    no* n = (no*) calloc(1, sizeof(no));              //cria um nó que recebe o espaço alocado para o nó
     n->info = info;                                //o nó recebe a informação
     n->prox = NULL;                                //o nó recebe o proximo como NULL
     if (c->inicio == NULL) {                       //se o inicio da lista for NULL

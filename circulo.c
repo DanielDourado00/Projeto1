@@ -7,11 +7,11 @@ typedef struct circulo {
     double raio;
     char corborda[20];
     char corprench[20];
-} circulo;
+} Circulo;
 
 
 void criacirculo(int i, double x, double y, double raio, char corborda[], char corprench[]) {
-    circulo* c = (circulo*) malloc(sizeof(circulo));
+    Circulo* c = (Circulo*) malloc(sizeof(Circulo));
     c->i = i;
     c->x = x;
     c->y = y;
@@ -21,26 +21,32 @@ void criacirculo(int i, double x, double y, double raio, char corborda[], char c
     return c;
 }
 
-void criacirculoi(circulo* c, int i) {
+void criacirculoi(Circle circle, int i) {
+    Circulo* c = (Circulo*) circle;
     c->i = i;
 }
 
-void criacirculox(circulo* c, double x) {
+void criacirculox(Circle circle, double x) {
+    Circulo* c = (Circulo*) circle;
     c->x = x;
 }
 
-void criacirculoy(circulo* c, double y) {
+void criacirculoy(Circle circle, double y) {
+    Circulo* c = (Circulo*) circle;
     c->y = y;
 }
 
-void criacirculoraio(circulo* c, double raio) {
+void criacirculoraio(Circle circle, double raio) {
+    Circulo* c = (Circulo*) circle;
     c->raio = raio;
 }
 
-void criacirculocorborda(circulo* c, char corborda[]) {
+void criacirculocorborda(Circle circle, char corborda[]) {
+    Circulo* c = (Circulo*) circle;
     strcpy(c->corborda, corborda);
 }
 
-void criacirculocorprench(circulo* c, char corprench[]) {
+void criacirculocorprench(Circle circle, char corprench[]) {
+    Circulo* c = (Circulo*) circle;
     strcpy(c->corprench, corprench);
 }

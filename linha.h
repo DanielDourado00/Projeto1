@@ -3,18 +3,20 @@
 #ifndef linha_h
 #define linha_h
 
-void criaLinha(int i, double x, double y, double x1, double y1, char corborda[]);
+typedef void* Line;
 
-void crialinhaid(linha* l, int i);
+Line criaLinha(int i, double x, double y, double x1, double y1, char corborda[]);
 
-void crialinhax(linha* l, double x);
+void crialinhaid(Line l, int i);
 
-void crialinhay(linha* l, double y);
+void crialinhax(Line l, double x);
 
-void crialinhax1(linha* l, double x1);
+void crialinhay(Line l, double y);
 
-void crialinhay1(linha* l, double y1);
+void crialinhax1(Line l, double x1);
 
-void crialinhacorborda(linha* l, char corborda[]);
+void crialinhay1(Line l, double y1);
+
+void crialinhacorborda(Line l, char corborda[]);
 
 #endif

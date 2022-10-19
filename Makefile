@@ -1,31 +1,43 @@
-EXEC = gcc
-CFLAGS = -std=c99 -fstack-protector-all -g
-PROJ_NAME = ted
+#Makefile do siguel
 
-clear:
-	rm -f *.o
-	rm -f $(PROJ_NAME)
+# Nome do arquivo final
+PROJ_NAME=ted
+ 
+# arquivos .c
+C_SOURCE=$(wildcard *.c)
+ 
+# arquivos .h
+H_SOURCE=$(wildcard *.h)
+ 
+# arquivos .o
+OBJ=$(C_SOURCE:.c=.o)
+ 
+# compilador
+CC=gcc
+ 
+# Flags
+CC_FLAGS=-c         \
+		 -g         \
+		 -w         \
+         -W         \
+         -Wall      \
+	 -std=c99	\
+	 -fstack-protector-all
+ 
+#
+# Compila e linka os arquivos
+#
+ted: $(PROJ_NAME)
+ 
+$(PROJ_NAME): $(OBJ)
+	$(CC) -o $@ $^ -lm
+ 
+%.o: %.c %.h
 
-	$(PROJ_NAME): main.o circulo.o retangulo.o linha.o  qry.o svg.o paths.o
-		$(EXEC) $(CFLAGS) main.o circulo.o retangulo.o linha.o qry.o svg.o paths.o -o $(PROJ_NAME) -lm
-
-	main.o: main.c
-	$(EXEC) $(CFLAGS) -c main.c
-
-	circulo.o: circulo.c				#compilação do circulo
-	$(EXEC) $(CFLAGS) -c circulo.c
-
-	retangulo.o: retangulo.c 			#compilação do retangulo
-	$(EXEC) $(CFLAGS) -c retangulo.c
-
-	linha.o: linha.c					#compilação da linha
-	$(EXEC) $(CFLAGS) -c linha.c
-
-	qry.o: qry.c						#compilação do qry
-	$(EXEC) $(CFLAGS) -c qry.c
-
-	svg.o: svg.c						#compilação do svg
-	$(EXEC) $(CFLAGS) -c svg.c
-
-	paths.o: paths.c					#compilação do paths
-	$(EXEC) $(CFLAGS) -c paths.c
+	$(CC) -o $@ $< $(CC_FLAGS)
+ 
+main: main.c $(H_SOURCE)
+	$(CC) -o $@ $< $(CC_FLAGS)
+ 
+clean:
+	rm -rf *.o $(PROJ_NAME) *~
