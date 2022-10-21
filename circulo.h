@@ -5,7 +5,7 @@
 
 typedef void* Circle;
 
-void criacirculo(int id, double x, double y, double raio,char corborda[], char corprench[]);
+void criacirculo(int i, double x, double y, double raio,char corborda[], char corprench[]);
 
 void criacirculoi(Circle c, int i);
 
@@ -18,5 +18,7 @@ void criacirculoraio(Circle c, double r);
 void criacirculocorborda(Circle c, char corborda[]);
 
 void criacirculocorprench(Circle c, char corprench[]);
+
+void imprimecirculo(Circle circle);
 
 #endif

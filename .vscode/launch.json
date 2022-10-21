@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/danie/Desktop/Faculdade UEL/materias segundo ano primeiro semestre/AEstrutura de Dados/T1",
-      "program": "c:/Users/danie/Desktop/Faculdade UEL/materias segundo ano primeiro semestre/AEstrutura de Dados/T1/build/Debug/outDebug",
+      "cwd": "c:/Users/danie/Desktop/Projeto1",
+      "program": "c:/Users/danie/Desktop/Projeto1/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

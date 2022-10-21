@@ -1,23 +1,24 @@
 #include "circulo.h"
 
+char saida[]; // saida do programa
 typedef struct circulo {
     int i;
     double x;
     double y;
     double raio;
-    char corborda[20];
-    char corprench[20];
+    char corb[20];
+    char corp[20];
 } Circulo;
 
 
-void criacirculo(int i, double x, double y, double raio, char corborda[], char corprench[]) {
+void criacirculo(int i, double x, double y, double raio, char corb[], char corp[]) {
     Circulo* c = (Circulo*) malloc(sizeof(Circulo));
     c->i = i;
     c->x = x;
     c->y = y;
     c->raio = raio;
-    strcpy(c->corborda, corborda);
-    strcpy(c->corprench, corprench);
+    strcpy(c->corb, corb);
+    strcpy(c->corp, corp);
     return c;
 }
 
@@ -41,12 +42,18 @@ void criacirculoraio(Circle circle, double raio) {
     c->raio = raio;
 }
 
-void criacirculocorborda(Circle circle, char corborda[]) {
+void criacirculocorb(Circle circle, char corb[]) {
     Circulo* c = (Circulo*) circle;
-    strcpy(c->corborda, corborda);
+    strcpy(c->corb, corb);
 }
 
-void criacirculocorprench(Circle circle, char corprench[]) {
+void criacirculocorp(Circle circle, char corp[]) {
     Circulo* c = (Circulo*) circle;
-    strcpy(c->corprench, corprench);
+    strcpy(c->corp, corp);
+}
+
+void imprimecirculo(Circle circle) {
+    Circulo* c = (Circulo*) circle;
+    printf(saida, "i: %d x: %lf y: %lf raio: %lf corb: %s corp: %s \n", c->i, c->x, c->y, c->raio, c->corb, c->corp);
+    puts (saida);
 }
