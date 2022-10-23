@@ -11,16 +11,17 @@ int i;                                                                    //iden
 double x, y, x1, y1, raio, h;                                            //eixo x, eixo y, x1
 char corborda[20], corprench[20], cor[20], anc[1], txto[100];
     
-    
+
     if (!aux) {
     return;
 }
+
 if (!getremoved(aux)) {
 
     switch (gettipo(aux)) {
         
         case 'c':                                                                 //circulo
-            getcirculo(aux, &i, &x, &y, &raio, &h, corborda, corprench);          //pega os dados do circulo
+            getcirculo(aux, &i, &x, &y, &raio, corborda, corprench);          //pega os dados do circulo
             printCirculo(i, x, y, raio, h, corborda, corprench, qrySVG);          //imprime o circulo para conferir se esta certo
             fprintf(qrySVG, "<circle i=\"%d\" cx=\"%lf\" cy=\"%lf\" raio=\"%lf\" stroke=\"%s\" stroke-width=\"1\" fill=\"%s\" fill-opacity=\"75%%\"/>\n", i, x, y, raio, corborda, corprench);
             break;

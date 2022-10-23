@@ -22,9 +22,15 @@ void criacirculo(int i, double x, double y, double raio, char corb[], char corp[
     return c;
 }
 
+
 void criacirculoi(Circle circle, int i) {
     Circulo* c = (Circulo*) circle;
     c->i = i;
+}
+
+void getcirculoi(Circle circle) {
+    Circulo* c = (Circulo*) circle;
+    return c->i;
 }
 
 void criacirculox(Circle circle, double x) {
@@ -57,3 +63,4 @@ void imprimecirculo(Circle circle) {
     printf(saida, "i: %d x: %lf y: %lf raio: %lf corb: %s corp: %s \n", c->i, c->x, c->y, c->raio, c->corb, c->corp);
     puts (saida);
 }
+
