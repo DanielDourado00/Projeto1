@@ -1,9 +1,7 @@
-#include "circulo.h"
-#include "retangulo.h"
-#include "txt.h"
-#include "svg.h"
-#include "linha.h"
+#include "biblioteca.h"
+#include "forma.h"
 #include "path.h"
+#include "lista.h"
 
 
 ///////////////////////////////////////////PARAMETROS///////////////////////////////////////////
@@ -17,6 +15,7 @@ int main (int argc, char *argv[]) {
 
 
 
-void* lista = crialista();                                        //cria a lista de acordo com o tipo de lista
+/* void* lista = crialista();  */                                       //cria a lista de acordo com o tipo de lista
 
-    }
+}
+}

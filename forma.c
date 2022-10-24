@@ -4,11 +4,11 @@ typedef struct forma{
 
     double x, y, raio, h, w, x2, y2;
     char i[2], a[2], corborda[20], corprench[20], anc[1], txto[100]; 
-}
+}forma;
 
 
 void* criarforma(char i[], double x, double y, double raio, double h, double w, double x2, double y2, char corborda[], char corprench[], char anc[], char txto[]){
-    forma* f = (forma*)calloc(1, sizeof(forma));                
+    forma* f = calloc(1, sizeof(forma));                
     strcpy(f->i, i);                            
 
     f->x = x;
@@ -26,62 +26,62 @@ void* criarforma(char i[], double x, double y, double raio, double h, double w, 
     return f;
 }
 
-char* geti(Forma F){
+char* getI(Forma F){
     forma* f = (forma*)F;
     return f->i;
 }
 
-double getx(Forma F){
+double getX(Forma F){
     forma* f = (forma*)F;
     return f->x;
 } 
 
-double gety(Forma F){
+double getY(Forma F){
     forma* f = (forma*)F;
     return f->y;
 }
 
-double getraio(Forma F){
+double getRaio(Forma F){
     forma* f = (forma*)F;
     return f->raio;
 }
 
-double geth(Forma F){
+double getH(Forma F){
     forma* f = (forma*)F;
     return f->h;
 }
 
-double getw(Forma F){
+double getW(Forma F){
     forma* f = (forma*)F;
     return f->w;
 }
 
-double getx2(Forma F){
+double getX2(Forma F){
     forma* f = (forma*)F;
     return f->x2;
 }
 
-double gety2(Forma F){
+double getY2(Forma F){
     forma* f = (forma*)F;
     return f->y2;
 }
 
-char* getcorborda(Forma F){
+char* getCorborda(Forma F){
     forma* f = (forma*)F;
     return f->corborda;
 }
 
-char* getcorprench(Forma F){
+char* getCorprench(Forma F){
     forma* f = (forma*)F;
     return f->corprench;
 }
 
-char* getanc(Forma F){
+char* getAnc(Forma F){
     forma* f = (forma*)F;
     return f->anc;
 }
 
-char* gettxto(Forma F){
+char* getTxto(Forma F){
     forma* f = (forma*)F;
     return f->txto;
 }
