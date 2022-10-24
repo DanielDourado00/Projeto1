@@ -30,6 +30,7 @@
   ],
   "files.associations": {
     "main": "c",
-    "retangulo.h": "c"
+    "retangulo.h": "c",
+    "stdbool.h": "c"
   }
 }

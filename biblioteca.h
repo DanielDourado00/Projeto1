@@ -3,7 +3,7 @@
 #include <string.h>
 #include <math.h>
 #include <stdbool.h>
-
+#include <stdbool.h>
 
 /* importo difetenres bibliotecas para as .c. */
 

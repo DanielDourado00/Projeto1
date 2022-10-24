@@ -9,13 +9,13 @@ int i;                                                                    //iden
 double x, y, x1, y1, raio, h;                                            //eixo x, eixo y, x1
 char corborda[20], corprench[20], cor[20], anc[1], txto[100];
 
- void createSvg(FILE *svg, Lista lista) {   
+  void createSvg(FILE *svg, Lista lista) {   
     
     for (void* j = obterinicio(lista) ; j != NULL ; j = obterprox(j)){
-    void* aux = obterinfo(j);
+    void* aux = obterinfo(j); 
 
 
-    /*switch (gettipo(aux)){                                                        //gettipo pega info do geo e faz a compracao
+    switch (gettipo(aux)){                                                        //gettipo pega info do geo e faz a compracao
         
         case 'c':                                                                 //circulo
             getcirculo(aux, &i, &x, &y, &raio, corborda, corprench);              //pega os dados do circulo
@@ -43,9 +43,8 @@ char corborda[20], corprench[20], cor[20], anc[1], txto[100];
 
         default:
             break;
-    }*/
+   
 
 }                                             //chama a funcao recursivamente para imprimir todos os elementos da lista 
 }
-
 

@@ -13,9 +13,5 @@ int main (int argc, char *argv[]) {
     for (i = 0; i < argc; i++) {    //imprime os parametros
         printf("%s\n", argv[i]);
 
-
-
-/* void* lista = crialista();  */                                       //cria a lista de acordo com o tipo de lista
-
 }
 }

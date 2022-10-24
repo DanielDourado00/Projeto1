@@ -3,6 +3,6 @@
 #ifndef SVG_H
 #define SVG_H
 
-void printSVG(void* aux, FILE* qrySVG);
+void createSvg(FILE *svg, Lista lista);
 
 #endif

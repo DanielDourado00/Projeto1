@@ -1,9 +1,6 @@
 #include "biblioteca.h"
-
 #ifndef _LISTA_H
 #define _LISTA_H
-
-#include <stdbool.h>
 
 /**
 Uma lista e´ uma colecao ordenada de itens (ou seja, um elemento possui um antecessor e um sucessor)  em que seus elementos podem
@@ -51,7 +48,8 @@ Posic insert(Lista L, Item info);
 Item pop(Lista L);
 
 /** Remove o elemento da lista L indicado por p.  p deve indicar um elemento existente em L. O comprimento da lista e' diminuido de 1 elemento. */
-void remove(Lista L, Posic p);
+void remov(Lista L, Posic p);
+
 
 /** Retorna o valor do item da lista indicado por p.
     p deve indicar um elemento existente em L. */

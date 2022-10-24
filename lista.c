@@ -1,93 +1,158 @@
-#include "biblioteca.h"
-
 #include "lista.h"
 
-/* lista dinamica */
 
-typedef struct no {                 //estrutura do nó
-    void* info;
-    struct no* prox;
-} no;
+typedef struct no {
+    Item  it;           //equivale ao valor do video
+    struct no *prox;
+} No;
 
-typedef struct conteudo {          //estrutura do conteudo
-    no* inicio;
-    int tam;
-    no* fim;
-} conteudo;
-
-
-/* aloc dinamica = aumento o tamanho e preencho de uma maneira indeterminada
- */
-void* crialista() {                //cria a lista
-    conteudo* c = (conteudo*) calloc(1, sizeof(conteudo));         //aloca espaço para a lista
-    c->inicio = NULL;                                          //inicia o começo da lista como NULL 
-    c->tam = 0;                                                //inicia o tamanho da lista como 0
-    c->fim = NULL;                                             //inicia o fim da lista como NULL
-    return c;
-}
-
-void* inserelista (void* lista, void* info) {      //insere um elemento na lista
-    conteudo* c = (conteudo*) lista;               //cria um conteudo que recebe a lista
-    no* n = (no*) calloc(1, sizeof(no));              //cria um nó que recebe o espaço alocado para o nó
-    n->info = info;                                //o nó recebe a informação
-    n->prox = NULL;                                //o nó recebe o proximo como NULL
-    if (c->inicio == NULL) {                       //se o inicio da lista for NULL
-        c->inicio = n;                             //o inicio da lista recebe o nó
-        c->fim = n;                                //o fim da lista recebe o nó
-    } else {                                       //se não
-        c->fim->prox = n;                          //o proximo do fim da lista recebe o nó
-        c->fim = n;                                //o fim da lista recebe o nó
-    }
-    c->tam++;                                      //aumenta o tamanho da lista
-    return c;
-}
-
-void* removElemento(void* lista, void* info) {     //remove um elemento da lista
-    conteudo* c = (conteudo*) lista;               //cria um conteudo que recebe a lista
-    no* n = c->inicio;                             //cria um nó que recebe o inicio da lista
-    no* ant = NULL;                                //cria um nó que recebe NULL
-    while (n != NULL) {                            //enquanto o nó for diferente de NULL
-
-        if (n->info == info) {                     //se a informação do nó for igual a informação recebida
-            if (ant == NULL) {                     //se o anterior for NULL
-                c->inicio = n->prox;               //o inicio da lista recebe o proximo do nó
-            } else {                               //se não
-                ant->prox = n->prox;               //o proximo do anterior recebe o proximo do nó
+Posic insert(Lista L, Item info) {
+  No *aux, *novo = calloc(1, sizeof(No));
+    if (novo){
+        novo -> it = info;
+        novo -> prox = NULL;
+      //vai ser o primeiro no?
+        if (L == NULL){
+            L = novo;
+        }else{
+            aux = L;
+            while (aux -> prox != NULL){
+                aux = aux -> prox;
+                aux -> prox = novo;
             }
-            if (n->prox == NULL) {                 //se o proximo do nó for NULL
-                c->fim = ant;                      //o fim da lista recebe o anterior
-            }
-            free(n);                               //libera o nó
-            c->tam--;                              //diminui o tamanho da lista
-            return c;                              //retorna a lista
         }
-        ant = n;                                   //o anterior recebe o nó
-        n = n->prox;                               //o nó recebe o proximo do nó
+    }else
+        printf("Erro de alocacao\n");
+}
+
+int length(Lista L){                  //retorna o tamanho da lista
+    int cont = 0;
+    No *aux = L;
+    while (aux != NULL){             //enquanto nao chegar no final da lista
+        cont++;                      //conta
+        aux = aux -> prox;           //vai para o proximo
+    }   
+    return cont;   
+}
+
+int maxLength(Lista L){
+    return -1;
+}
+
+bool isEmpty(Lista L){
+    if (L == NULL)
+        return true;
+    else
+        return false;
+}
+
+bool isFull(Lista L){
+    return false;
+}
+
+Item pop(Lista L){                                          //retorna o primeiro elemento da lista
+    No *aux = L;
+    Item it;
+    if (L == NULL){                                         //se a lista estiver vazia
+        printf("Lista vazia\n");
+        return NULL;
+    }else{
+        it = aux -> it;                                     //pega o valor do primeiro no
+        L = aux -> prox;                                    //vai para o proximo no
+        free(aux);                                          //libera o primeiro no
+        return it;                                          //retorna o valor do primeiro no
     }
-    return c;                                      //retorna a lista
+} 
+
+void remov(Lista L, Posic p){                               //remove o elemento da lista L indicado por p
+    No *aux = L;
+    No *aux2 = p;
+    if (L == NULL){                                         //se a lista estiver vazia
+        printf("Lista vazia\n");
+    }else{
+        while (aux -> prox != aux2){                        //enquanto nao chegar no no anterior ao que sera removido
+            aux = aux -> prox;                              //vai para o proximo no
+        }
+        aux -> prox = aux2 -> prox;                         //o no anterior ao que sera removido aponta para o proximo do que sera removido
+        free(aux2);                                         //libera o no que sera removido
+    }
+}
+
+Item get(Lista L, Posic p){                                //retorna o valor do no indicado por p
+    No *aux = p;                                           //aux recebe o no indicado por p
+    return aux -> it;                                       //retorna o valor do no
 }
 
 
-/* obtem informações sobre começo proximo conteudo e final */
-
-void* obterinicio(void* lista) {                   //retorna o inicio da lista
-    conteudo* c = (conteudo*) lista;               //cria um conteudo que recebe a lista
-    return c->inicio;                              //retorna o inicio da lista
+Posic insertBefore(Lista L,Posic p, Item info){             //insere um elemento antes do elemento indicado por p   
+    No *aux = L;
+    No *aux2 = p;
+    No *novo = calloc(1, sizeof(No));
+    if (novo){                                              
+        novo -> it = info;                                   //insere o valor no novo no
+        novo -> prox = NULL;
+        if (L == NULL){                                     //se a lista estiver vazia
+            L = novo;
+        }else{
+            while (aux -> prox != aux2){                    //enquanto nao chegar no no anterior ao que sera inserido
+                aux = aux -> prox;                          //vai para o proximo no
+            }
+            aux -> prox = novo;                             //o no anterior ao que sera inserido aponta para o novo no
+            novo -> prox = aux2;                            //o novo no aponta para o no que sera inserido
+        }
+    }else
+        printf("ERRO!\n");
 }
 
- void* obterproximo(void* node) {                //retorna o proximo da lista
-    no* c = (no*) node;                          //cria um nó que recebe a lista  
-    return c->prox;                               //retorna o proximo da lista
+Posic insertAfter(Lista L,Posic p, Item info){      //
+    No *aux = L;
+    No *aux2 = p;
+    No *novo = calloc(1, sizeof(No));
+    if (novo){                                              
+        novo -> it = info;                                  //insere o valor no novo no
+        novo -> prox = NULL;
+        if (L == NULL){                                     //se a lista estiver vazia
+            L = novo;
+        }else{
+            while (aux != aux2){                            //enquanto nao chegar no no que sera inserido
+                aux = aux -> prox;                          //vai para o proximo no
+            }
+            aux -> prox = novo;                             //o no que sera inserido aponta para o novo no
+            novo -> prox = aux2 -> prox;                    //o novo no aponta para o proximo do no que sera inserido
+        }
+    }else
+        printf("ERRO!\n");
 }
 
-void* obterinfo(void* node) {                    //retorna a informação da lista
-    no* c = (no*) node;                          //cria um nó que recebe a lista
-    return c->info;                               //retorna a informação da lista
+Posic getFirst(Lista L){
+
+    if (length(L) == 0)
+        return NULL;
+    else
+        return L;
 }
 
-void* obterfim(void* lista) {                     //retorna o fim da lista
-    conteudo* c = (conteudo*) lista;              //cria um conteudo que recebe a lista
-    return c->fim;                                //retorna o fim da lista
+/* Posic getNext(Lista L,Posic p){
+    
+} */
+
+Posic getLast(Lista L){                                     //retorna o ultimo elemento da lista
+    No *aux = L;
+    if (length(L) == 0){                                         //se a lista estiver vazia
+        return NULL;
+    }
 }
 
+/* Posic getPrevious(Lista L,Posic p){
 
+} */
+
+void killLista(Lista L){                                    //libera a lista
+    No *aux = L;
+    No *aux2;
+    while (aux != NULL){                                    //enquanto nao chegar no final da lista
+        aux2 = aux -> prox;                                 //aux2 aponta para o proximo no
+        free(aux);                                          //libera o no atual
+        aux = aux2;                                         //aux aponta para o proximo no
+    }
+}
