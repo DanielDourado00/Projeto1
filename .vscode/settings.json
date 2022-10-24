@@ -29,6 +29,7 @@
     "**/.vscode/**"
   ],
   "files.associations": {
-    "main": "c"
+    "main": "c",
+    "retangulo.h": "c"
   }
 }

@@ -75,13 +75,13 @@ void* obterinicio(void* lista) {                   //retorna o inicio da lista
     return c->inicio;                              //retorna o inicio da lista
 }
 
- void* obterproximo(void* lista) {                //retorna o proximo da lista
-    no* c = (no*) lista;                          //cria um nó que recebe a lista  
+ void* obterproximo(void* node) {                //retorna o proximo da lista
+    no* c = (no*) node;                          //cria um nó que recebe a lista  
     return c->prox;                               //retorna o proximo da lista
 }
 
-void* obterinfo(void* lista) {                    //retorna a informação da lista
-    no* c = (no*) lista;                          //cria um nó que recebe a lista
+void* obterinfo(void* node) {                    //retorna a informação da lista
+    no* c = (no*) node;                          //cria um nó que recebe a lista
     return c->info;                               //retorna a informação da lista
 }
 
