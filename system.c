@@ -42,7 +42,8 @@ void cleanparameter(void* path){
 
 /* ---------------------------------------------TRATAR PARAMETROS--------------------------------------------- */
 
-par tratarparametros (int argc, char* argv[]) {
+ void tratarparametros (int argc, char* argv[], void* path) {
+
     int i;
     char *aux;
     
@@ -70,8 +71,6 @@ par tratarparametros (int argc, char* argv[]) {
                    P->dirSaida = calloc (strlen(argv[i]), sizeof(char) +1);               // Aloca memoria p dir de saida
          }             strcpy(P->dirSaida, argv[i]);                                      // Diretório de saída
     printf("%s\n", argv[i]);
-
     }
 }
-
 /* ---------------------------------------------PARAMETROS TRATADOS--------------------------------------------- */

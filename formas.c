@@ -18,6 +18,14 @@ void* criarforma(char i[], double x, double y, double raio, double h, double w, 
     f->w = w;
     f->x2 = x2;
     f->y2 = y2;
+
+    if (anc[0] == 'i'){
+        strcpy(f->anc, "start");
+    }else if (anc[0] == 'm'){
+        strcpy(f->anc, "middle");
+    }else if (anc[0] == 'f'){
+        strcpy(f->anc, "end");
+    }
     
     strcpy(f->corborda, corborda);
     strcpy(f->corprench, corprench);
@@ -85,3 +93,4 @@ char* getTxto(Forma F){
     forma* f = (forma*)F;
     return f->txto;
 }
+

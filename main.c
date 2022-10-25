@@ -11,9 +11,10 @@ int main (int argc, char *argv[]) {
    
 
    Lista L = createLista(-1);
-   par p = tratarparametros(argc, argv);
+   void* path = criapath();
+   tratarparametros(argc, argv, path);
 
-   cleanparameter(p);
+   cleanparameter(path);
    killLista(L);
     
 }

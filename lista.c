@@ -23,7 +23,7 @@ Lista createLista(int capacidade){
     } 
 }
 
-Posic insert(Lista L, Item info) {
+Posic insert(Lista L, Item info) {          //insere no final da lista
   No *aux, *novo = calloc(1, sizeof(No));
     if (novo){
         novo ->valorno = info;
@@ -65,7 +65,7 @@ bool isEmpty(Lista L){              //retorna verdadeiro se a lista estiver vazi
         return false;
 }
 
-bool isFull(Lista L){               //verifica se a lista esta cheia
+bool isFull(Lista L){                                       //verifica se a lista esta cheia
     return false;
 }
 
@@ -123,7 +123,7 @@ Posic insertBefore(Lista L,Posic p, Item info){             //insere um elemento
         printf("ERRO!\n");
 }
 
-Posic insertAfter(Lista L,Posic p, Item info){      //
+Posic insertAfter(Lista L,Posic p, Item info){               //
     No *aux = L;
     No *aux2 = p;
     No *novo = calloc(1, sizeof(No));
