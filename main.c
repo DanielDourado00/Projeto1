@@ -9,12 +9,11 @@
 
 int main (int argc, char *argv[]) {
    
-
    Lista L = createLista(-1);
-   void* path = criapath();
-   tratarparametros(argc, argv, path);
+  /*  void* path = criapath(); */
+   parametro P = tratarparametros(argc, argv);
 
-   cleanparameter(path);
+   cleanparameter(P);
    killLista(L);
     
 }
