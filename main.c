@@ -2,6 +2,7 @@
 #include "formas.h"
 #include "path.h"
 #include "lista.h"
+#include "system.h"
 /* #include "geo.h" */
 /* #include "qry.h" */
 
@@ -9,8 +10,10 @@
 int main (int argc, char *argv[]) {
    
 
-   Lista l = createLista(-1);
-    
-   
+   Lista L = createLista(-1);
+   tratarparametros(argc, argv);
+
+   cleanparameter(path);
+   killLista(L);
     
 }
