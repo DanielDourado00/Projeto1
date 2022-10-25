@@ -13,10 +13,10 @@ typedef struct parametros {                 // Estrutura que armazena os parâme
     char* dirEntrada;               // diretório de entrada
     char* dirSaida;                 // diretório de saída
     char* arquivogeo;               // nome do arquivo geo
-    char* nomegeo;                  // nome do arquivo geo sem extensão
+    char* geo;                      // nome do arquivo geo sem extensão
+    char* qry;                      // nome do arquivo qry sem extensão
     char* dirEntradaqry;            // diretório de entrada qry
     char* arquivogeoqry;            // nome do arquivo qry
-    char* nomeqry;                  // nome do arquivo qry sem extensão
     char* dirSaidageosvg;           // diretório de saída geo svg
     char* dirSaidageoqrysvg;        // diretório de saída geo qry svg
 
@@ -31,10 +31,10 @@ void cleanparameter(void* path){
      free(p->dirEntrada);
      free(p->dirSaida);
      free(p->arquivogeo);
-     free(p->nomegeo);
+     free(p-> geo);
      free(p->dirEntradaqry);
      free(p->arquivogeoqry);
-     free(p->nomeqry);
+     free(p->qry);
      free(p->dirSaidageosvg);
      free(p->dirSaidageoqrysvg);
      free(p);
@@ -52,20 +52,23 @@ void* tratarparametros (int argc, char *argv[]) {
 
          if (strcmp(argv[i], "-e") == 0) {
                   i++;
-                  diretorios->diretorioEntrada = calloc (strlen(argv[i]), sizeof(char) +1);
-
+                  P->dirEntrada = calloc (strlen(argv[i]), sizeof(char) +1);
+                    strcpy(P->dirEntrada, argv[i]);
+                    
          }else if (strcmp(argv[i], "-f") == 0) {
                i++;
-                   diretorios->nomeGeo = calloc (strlen(argv[i]), sizeof(char) +1);
+                   P->geo = calloc (strlen(argv[i]), sizeof(char) +1);
+                    strcpy(P->geo, argv[i]);
 
          }else if (strcmp(argv[i], "-q") == 0) {
               i++;
-                   diretorios->nomeQry = calloc (strlen(argv[i]), sizeof(char) +1);
+                   P-> qry = calloc (strlen(argv[i]), sizeof(char) +1);
+                    strcpy(P->qry, argv[i]);
 
          }else if (strcmp(argv[i], "-o") == 0) {
               i++;
-                   diretorios->diretorioSaida = calloc (strlen(argv[i]), sizeof(char) +1);
-         }
+                   P->dirSaida = calloc (strlen(argv[i]), sizeof(char) +1);
+         }             strcpy(P->dirSaida, argv[i]);
     printf("%s\n", argv[i]);
     }
 }
