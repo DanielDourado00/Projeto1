@@ -1,4 +1,4 @@
-#include "forma.h"
+#include "formas.h"
 
 typedef struct forma{
 

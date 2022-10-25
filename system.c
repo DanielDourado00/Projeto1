@@ -42,7 +42,7 @@ void cleanparameter(void* path){
 
 /* ---------------------------------------------TRATAR PARAMETROS--------------------------------------------- */
 
-void* tratarparametros (int argc, char *argv[]) {
+par tratarparametros (int argc, char* argv[]) {
     int i;
     char *aux;
     

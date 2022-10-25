@@ -3,9 +3,11 @@
 #ifndef SYSTEM_H
 #define SYSTEM_H
 
+typedef void* par;
+typedef void* path;
 
-void* tratarparametros(void* argc, void* argv);
+void* tratarparametros(int argc, char* argv[]);
 
-typedef void cleanparameter(void* path);
+void cleanparameter(void* path);
 
 #endif
