@@ -13,7 +13,7 @@ int main (int argc, char *argv[]) {
    Lista L = createLista(-1);
    par p = tratarparametros(argc, argv);
 
-   cleanparameter(path);
+   cleanparameter(p);
    killLista(L);
     
 }

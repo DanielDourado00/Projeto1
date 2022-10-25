@@ -8,6 +8,6 @@ typedef void* path;
 
 void* tratarparametros(int argc, char* argv[]);
 
-void cleanparameter(void* path);
+void cleanparameter(path);
 
 #endif
