@@ -2,14 +2,31 @@
 
 
 typedef struct no {
-    Item  it;           //equivale ao valor do video
+    Item valorno;           //valor do no
     struct no *prox;
 } No;
+
+typedef struct lst {
+    int limite;
+    int cont;  
+    No *inicio;
+    No *fim;
+} Lst;
+
+
+Lista createLista(int capacidade){
+    Lst *L = calloc(1, sizeof(Lst));
+   if (L < 0) {
+    L -> limite = -1;                   //se a capacidade for menor que 0, o tamanho da lista é ilimitado
+    }else{
+        L -> limite = capacidade;       //se a capacidade for maior que 0, o tamanho da lista é limitado
+    } 
+}
 
 Posic insert(Lista L, Item info) {
   No *aux, *novo = calloc(1, sizeof(No));
     if (novo){
-        novo -> it = info;
+        novo ->valorno = info;
         novo -> prox = NULL;
       //vai ser o primeiro no?
         if (L == NULL){
@@ -36,31 +53,33 @@ int length(Lista L){                  //retorna o tamanho da lista
 }
 
 int maxLength(Lista L){
-    return -1;
+    Lst *lst = (Lst*) L;            
+    return lst -> limite;           //retorna o tamanho maximo da lista
 }
 
-bool isEmpty(Lista L){
+bool isEmpty(Lista L){              //retorna verdadeiro se a lista estiver vazia
+    Lst *lst = (Lst*) L;            
     if (L == NULL)
         return true;
     else
         return false;
 }
 
-bool isFull(Lista L){
+bool isFull(Lista L){               //verifica se a lista esta cheia
     return false;
 }
 
 Item pop(Lista L){                                          //retorna o primeiro elemento da lista
     No *aux = L;
-    Item it;
+    Item valorno;
     if (L == NULL){                                         //se a lista estiver vazia
         printf("Lista vazia\n");
         return NULL;
     }else{
-        it = aux -> it;                                     //pega o valor do primeiro no
+    valorno = aux ->valorno;                                     //pega o valor do primeiro no
         L = aux -> prox;                                    //vai para o proximo no
         free(aux);                                          //libera o primeiro no
-        return it;                                          //retorna o valor do primeiro no
+        return valorno;                                          //retorna o valor do primeiro no
     }
 } 
 
@@ -80,7 +99,7 @@ void remov(Lista L, Posic p){                               //remove o elemento 
 
 Item get(Lista L, Posic p){                                //retorna o valor do no indicado por p
     No *aux = p;                                           //aux recebe o no indicado por p
-    return aux -> it;                                       //retorna o valor do no
+    return aux ->valorno;                                       //retorna o valor do no
 }
 
 
@@ -89,7 +108,7 @@ Posic insertBefore(Lista L,Posic p, Item info){             //insere um elemento
     No *aux2 = p;
     No *novo = calloc(1, sizeof(No));
     if (novo){                                              
-        novo -> it = info;                                   //insere o valor no novo no
+        novo ->valorno = info;                                   //insere o valor no novo no
         novo -> prox = NULL;
         if (L == NULL){                                     //se a lista estiver vazia
             L = novo;
@@ -109,7 +128,7 @@ Posic insertAfter(Lista L,Posic p, Item info){      //
     No *aux2 = p;
     No *novo = calloc(1, sizeof(No));
     if (novo){                                              
-        novo -> it = info;                                  //insere o valor no novo no
+        novo ->valorno = info;                                  //insere o valor no novo no
         novo -> prox = NULL;
         if (L == NULL){                                     //se a lista estiver vazia
             L = novo;
@@ -132,9 +151,11 @@ Posic getFirst(Lista L){
         return L;
 }
 
-/* Posic getNext(Lista L,Posic p){
+Posic getNext(Lista L,Posic p){
+    No *NO = (No*) p;
+    return NO -> prox;
     
-} */
+}
 
 Posic getLast(Lista L){                                     //retorna o ultimo elemento da lista
     No *aux = L;
@@ -143,9 +164,16 @@ Posic getLast(Lista L){                                     //retorna o ultimo e
     }
 }
 
-/* Posic getPrevious(Lista L,Posic p){
-
-} */
+Posic getPrevious(Lista L,Posic p){                           //retorna o elemento anterior ao indicado por p 
+    Lst *lst = (Lst*) L;
+    No *NO = lst -> inicio;                                    //NO recebe o primeiro no da lista
+    if (NO == p)                                               //se o primeiro no for o que esta sendo procurado
+        return NULL;                                           //retorna NULL
+    while (NO -> prox != p){                                   //enquanto nao chegar no no anterior ao que esta sendo procurado
+        NO = NO -> prox;    
+    }
+    return NO;
+}
 
 void killLista(Lista L){                                    //libera a lista
     No *aux = L;

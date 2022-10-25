@@ -85,29 +85,4 @@ if (path[ult] == '/')
 // char* aux = strrchr(path , '/');
 }
 
-void tratarparametros (int argc, char *argv[]) {
 
-    int i;
-    struct dir* diretorios = (struct dir*) malloc(sizeof(struct dir));
-   
-    for (i = 0; i < argc; i++) { 
-
-         if (strcmp(argv[i], "-e") == 0) {
-                  i++;
-                  diretorios->diretorioEntrada = calloc (strlen(argv[i]), sizeof(char) +1);
-
-         }else if (strcmp(argv[i], "-f") == 0) {
-               i++;
-                   diretorios->nomeGeo = calloc (strlen(argv[i]), sizeof(char) +1);
-
-         }else if (strcmp(argv[i], "-q") == 0) {
-              i++;
-                   diretorios->nomeQry = calloc (strlen(argv[i]), sizeof(char) +1);
-
-         }else if (strcmp(argv[i], "-o") == 0) {
-              i++;
-                   diretorios->diretorioSaida = calloc (strlen(argv[i]), sizeof(char) +1);
-         }
-    printf("%s\n", argv[i]);
-    }
-}
