@@ -7,8 +7,9 @@
 
 typedef void* parametro;
 
-void* tratarparametros(int argc, char* argv[]);
+void* tratarparametros(int argc, char* argv[]);     //trata os parametros de entrada
 
-void cleanparameter(parametro);
+void cleanparameter(parametro);                     //limpa a estrutura de parametros
+
 
 #endif

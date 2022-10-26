@@ -32,6 +32,12 @@
     "main": "c",
     "retangulo.h": "c",
     "stdbool.h": "c",
-    "system.h": "c"
+    "system.h": "c",
+    "lista.h": "c",
+    "math.h": "c",
+    "geo.h": "c",
+    "biblioteca.h": "c",
+    "iostream": "c",
+    "formas.h": "c"
   }
 }

@@ -37,40 +37,50 @@ void cleanparameter(void* path){
      free(p->qry);
      free(p->dirSaidageosvg);
      free(p->dirSaidageoqrysvg);
+
      free(p);
 }
 
 /* ---------------------------------------------TRATAR PARAMETROS--------------------------------------------- */
 
- parametro tratarparametros (int argc, char* argv[]) {
+parametro tratarparametros(int argc, char *argv[])
+{
 
-    int i;
-    char *aux;
-    
-    parametros *P = calloc(1, sizeof(parametros));
-   
-    for (i = 0; i < argc; i++) { 
+     int i;
 
-         if (strcmp(argv[i], "-e") == 0) {
-                  i++;
-                  P->dirEntrada = calloc (strlen(argv[i]), sizeof(char) +1);              // Aloca memória para o diretório de entrada
-                    strcpy(P->dirEntrada, argv[i]);                                       // Diretório de entrada
+     parametros *P = calloc(1, sizeof(parametros));
 
-         }else if (strcmp(argv[i], "-f") == 0) {
+     for (i = 1; i < argc; i++)
+     {
+
+          if (strcmp(argv[i], "-e") == 0)
+          {
                i++;
-                   P->geo = calloc (strlen(argv[i]), sizeof(char) +1);                     // Aloca memória para o nome do arquivo geo
-                    strcpy(P->geo, argv[i]);                                              // Nome do arquivo geo sem extensão
+               P->dirEntrada = calloc(strlen(argv[i]) + 1, sizeof(char)); // Aloca memória para o diretório de entrada
+               strcpy(P->dirEntrada, argv[i]);                            // Diretório de entrada
+          }
+          else if (strcmp(argv[i], "-f") == 0)
+          {
+               i++;
+               P->geo = calloc(strlen(argv[i]) + 1, sizeof(char)); // Aloca memória para o nome do arquivo geo
+               strcpy(P->geo, argv[i]);                            // Nome do arquivo geo sem extensão
+          }
+          else if (strcmp(argv[i], "-q") == 0)
+          {
+               i++;
+               P->qry = calloc(strlen(argv[i]) + 1, sizeof(char));              // Aloca memória para o nome do arquivo qry
+               strcpy(P->qry, argv[i]);                                         // Nome do arquivo qry sem extensão
+          }
+          else if (strcmp(argv[i], "-o") == 0)
+          {
 
-         }else if (strcmp(argv[i], "-q") == 0) {
-              i++;
-                   P-> qry = calloc (strlen(argv[i]), sizeof(char) +1);                   // Aloca memória para o nome do arquivo qry
-                    strcpy(P->qry, argv[i]);                                              // Nome do arquivo qry sem extensão
-
-         }else if (strcmp(argv[i], "-o") == 0) {
-              i++;
-                   P->dirSaida = calloc (strlen(argv[i]), sizeof(char) +1);               // Aloca memoria p dir de saida
-         }             strcpy(P->dirSaida, argv[i]);                                      // Diretório de saída
-    printf("%s\n", argv[i]);
-    }
+               i++;
+               P->dirSaida = calloc(strlen(argv[i]) + 1, sizeof(char));         // Aloca memoria p dir de saida7
+               strcpy(P->dirSaida, argv[i]);
+          }                                                                     // Diretório de saída
+     }
 }
+
 /* ---------------------------------------------PARAMETROS TRATADOS--------------------------------------------- */
+
+/* --------------------------------------------------LER O GEO ------------------------------------------------- */
