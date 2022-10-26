@@ -4,7 +4,7 @@
 #ifndef GEO_H
 #define GEO_H
 
-void lerGeo(void* l, void* P);
+void lerGeo(FILE* arqgeo, Lista list);
 
 
 #endif

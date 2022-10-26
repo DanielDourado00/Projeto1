@@ -9,7 +9,7 @@ typedef struct forma{
 
 
 
-TipoForma getcirculo(void* no, int* id, double* x, double* y,double* raio, char* corborda, char* corprench){
+Figura criacirculo (int* id, double* x, double* y,double* raio, char* corborda, char* corprench){
 forma *f = (forma*)calloc(1, sizeof(forma));
     f->tipo = 'c';	
     f->id = *id;
@@ -19,14 +19,17 @@ forma *f = (forma*)calloc(1, sizeof(forma));
     strcpy(f->corborda, corborda);
     strcpy(f->corprench, corprench);
     return f;
+
 }
 
-TipoForma getretangulo(void* no, int* id, double* x, double* y, double* w, double* h, char* corborda, char* corprench){
+Figura criaretangulo (int* id, double* x, double* y, double* w, double* h, char* corborda, char* corprench){
 forma *f = (forma*)calloc(1, sizeof(forma));
     f->tipo = 'r';	
     f->id = *id;
     f->x = *x;
     f->y = *y;
+
+
     f->w = *w;
     f->h = *h;
     strcpy(f->corborda, corborda);
@@ -34,7 +37,7 @@ forma *f = (forma*)calloc(1, sizeof(forma));
     return f;
 }
 
-TipoForma gettxt(void* no, int* id, double* x, double* y, char* anc, char* cor, char* txto){
+Figura criatxt (int* id, double* x, double* y, char* anc, char* cor, char* txto){
 forma *f = (forma*)calloc(1, sizeof(forma));
     f->tipo = 't';	
     f->id = *id;
@@ -46,7 +49,7 @@ forma *f = (forma*)calloc(1, sizeof(forma));
     return f;
 }
 
-TipoForma getlinha(void* no, int* id, double* x, double* y, double* x2, double* y2, char* cor){
+Figura crialinha (int* id, double* x, double* y, double* x2, double* y2, char* cor){
 forma *f = (forma*)calloc(1, sizeof(forma));
     f->tipo = 'l';	
     f->id = *id;
@@ -59,114 +62,70 @@ forma *f = (forma*)calloc(1, sizeof(forma));
 }
 
 
-char gettipo(void* F){
-    forma* f = (forma*) F;
+char gettipo(TipoForma T){
+    forma* f = (forma*) T;
     return f->c;
 }
 
-char* getI(void* F){
-    forma* f = (forma*)F;
+char* getI(TipoForma T){
+    forma* f = (forma*)T;
     return f->id;
 }
 
-double getX(void* F){
-    forma* f = (forma*)F;
+double getX(TipoForma T){
+    forma* f = (forma*)T;
     return f->x;
 } 
 
-double getY(void* F){
-    forma* f = (forma*)F;
+double getY(TipoForma T){
+    forma* f = (forma*)T;
     return f->y;
 }
 
-double getRaio(void* F){
-    forma* f = (forma*)F;
+double getRaio(TipoForma T){
+    forma* f = (forma*)T;
     return f->raio;
 }
 
-double getH(void* F){
-    forma* f = (forma*)F;
+double getH(TipoForma T){
+    forma* f = (forma*)T;
     return f->h;
 }
 
-double getW(void* F){
-    forma* f = (forma*)F;
+double getW(TipoForma T){
+    forma* f = (forma*)T;
     return f->w;
 }
 
-double getX2(void* F){
-    forma* f = (forma*)F;
+double getX2(TipoForma T){
+    forma* f = (forma*)T;
     return f->x2;
 }
 
-double getY2(void* F){
-    forma* f = (forma*)F;
+double getY2(TipoForma T){
+    forma* f = (forma*)T;
     return f->y2;
 }
 
-char* getCorborda(void* F){
-    forma* f = (forma*)F;
+char* getCorborda(TipoForma T){
+    forma* f = (forma*)T;
     return f->corborda;
 }
 
-char* getCorprench(void* F){
-    forma* f = (forma*)F;
+char* getCorprench(TipoForma T){
+    forma* f = (forma*)T;
     return f->corprench;
 }
 
-char* getAnc(void* F){
-    forma* f = (forma*)F;
+char* getAnc(TipoForma T){
+    forma* f = (forma*)T;
     return f->anc;
 }
 
-char* getTxto(void* F){
-    forma* f = (forma*)F;
+char* getTxto(TipoForma T){
+    forma* f = (forma*)T;
     return f->txto;
 } 
-
-
-void getcirculo(void* no, int* id, double* x, double* y,double* raio, char* corborda, char* corprench){
-    forma* f = (forma*)no;
-    *id = atoi(f->id);
-    *x = f->x;
-    *y = f->y;
-    *raio = f->raio;
-    strcpy(corborda, f->corborda);
-    strcpy(corprench, f->corprench);
-}
-
-
-void getretangulo(void* no, int* id, double* x, double* y, double* w, double* h, char* corborda, char* corprench){
-    forma* f = (forma*)no;
-    *id = atoi(f->id);
-    *x = f->x;
-    *y = f->y;
-    *w = f->w;
-    *h = f->h;
-    strcpy(corborda, f->corborda);
-    strcpy(corprench, f->corprench);
-}
-void gettxt(void* no, int* id, double* x, double* y, char* anc, char* cor, char* txto){
-    forma* f = (forma*)no;
-    *id = atoi(f->id);
-    *x = f->x;
-    *y = f->y;
-    strcpy(anc, f->anc);
-    strcpy(cor, f->corborda);
-    strcpy(txto, f->txto);
-}
-void getlinha(void* no, int* id, double* x, double* y, double* x2, double* y2, char* cor){
-    forma* f = (forma*)no;
-    *id = atoi(f->id);
-    *x = f->x;
-    *y = f->y;
-    *x2 = f->x2;
-    *y2 = f->y2;
-    strcpy(cor, f->corborda);
-} 
-
-
-
 
 
 
