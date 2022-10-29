@@ -5,38 +5,40 @@
 
 void lerGeo(FILE *arqgeo, Lista L)
 {
+    int id;
+    double x, y, x2, w, y2, r, h;
+    char tipo, corborda[20], corprench[20], a, txto[100];
 
-    char tipo[300];
-    char part[7][30];
-
-    const char *tipo[8]; // vetor de strings para armazenar o conteudo do arquivo
-
-    while (!feof(arqgeo))                                                                                                   // enquanto n chegar ao final do arquivo
+    while (!feof(arqgeo)) // enquanto n chegar ao final do arquivo
     {
 
-        fgets(tipo, 300, arqgeo); // le a linha do arquivo e armazena na string tipo                                        // le a linha do arq e armazena na string tipo
+        fscanf(arqgeo, "%c", tipo); // le a linha do arq e armazena na string tipo
 
-        if (strcmp(tipo, "c"))                                                                                              // compara o conteudo do tipo com a letra
+            if (tipo == 'c') // compara o conteudo do tipo com a letra
         {
-            sscanf(tipo, "%s %s %s %s %s %s %s", part[0], part[1], part[2], part[3], part[4], part[5], part[6]);
-            TipoForma circulo = criacirculo((part[1]), (part[2]), (part[3]), (part[4]), part[5], part[6]);
+            fscanf(arqgeo, "%d %lf %lf %lf %s %s", &id, &x, &y, &r, corborda, corprench);
+            TipoForma circulo = criacirculo(id, x, y, r, corborda, corprench);
             insert(L, circulo);
         }
-        else if (strcmp(tipo, "r"))
+        else if (tipo == 'r')
         {
-            sscanf(tipo, "%s %s %s %s %s %s %s", part[0], part[1], part[2], part[3], part[4], part[5], part[6], part[7]);
-            TipoForma retangulo = criaretangulo((part[1]), (part[2]), (part[3]), (part[4]), (part[5]), part[6], part[7]);
+            fscanf(arqgeo, "%d %lf %lf %lf %lf %s %s", &id, &x, &y, &w, &h, corborda, corprench);
+            TipoForma retangulo = criaretangulo(id, x, y, w, h, corborda, corprench);
             insert(L, retangulo);
         }
-        else if (strcmp(tipo, "t"))
+        else if (tipo == 't')
         {
-            sscanf(tipo, "%s %s %s %s %s %s", part[0], part[1], part[2], part[3], part[4], part[5], part[6]);
-            TipoForma texto = criatxt((part[1]), (part[2]), (part[3]), part[4], part[5], part[6]);
+            fscanf(arqgeo, "%d %lf %lf %s %s", &id, &x, &y, corborda, corprench, txto);
+            TipoForma texto = criatxt(id, x, y, corborda, corprench, a, txto);
             insert(L, texto);
-        }else if (strcmp(tipo, "l")){
-            sscanf(tipo, "%s %s %s %s %s %s", part[0], part[1], part[2], part[3], part[4], part[5], part[6]);
-            TipoForma linha = crialinha((part[1]), (part[2]), (part[3]), (part[4]), (part[5]), part[6]);
+        }
+        else if (tipo == 'l')
+        {
+            fscanf(arqgeo, "%d %lf %lf %lf %lf %s", &id, &x, &y, &x2, &y2, corborda);
+            TipoForma linha = crialinha(id, x, y, x2, y2, corborda);
             insert(L, linha);
         }
+        
+        
     }
 }

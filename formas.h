@@ -11,28 +11,45 @@ typedef char* Info;
 
 /* Info newShape(); */
 /* int tam(void* T); */
+/* char* novaForma(); */
 
-char* novaForma();
-int getId(TipoForma T);
-double getY(TipoForma T);
-double getX(TipoForma T);
-double getRaio(TipoForma T);
-double getH(TipoForma T);
-double getW(TipoForma T);
-double getX2(TipoForma T);
-double getY2(TipoForma T);
-char* getCorborda(TipoForma T);
-char* getCorprench(TipoForma T);
-char* getAnc(TipoForma T);
+
+/* obetem as infor das forma */
+
+char getcf(TipoForma T);                    //caracter da forma
+int getId(TipoForma T);                     //id da forma
+double getY(TipoForma T);                   //y da forma
+double getX(TipoForma T);                   //x da forma
+double getRaio(TipoForma T);                //raio da forma
+double getH(TipoForma T);                   //altura da forma
+double getW(TipoForma T);                    //largura da forma
+double getX2(TipoForma T);                  //x2 da forma
+double getY2(TipoForma T);                  //y2 da forma
+char* getCorborda(TipoForma T);             //cor da borda da forma
+char* getCorprench(TipoForma T);            //cor de preenchimento da forma
+char* getAnc(TipoForma T);                  //ancora da forma
+char* getCor(TipoForma T);                  //cor da forma
+char* getTxto(TipoForma T);                  //texto da forma
 
 
 /* marcu */
 /* char gettipo(Forma F); */
 
-Figura criacirculo( int* id, double* x, double* y,double* raio, char* corborda, char* corprench);                   //parametros: id, x, y, raio, corborda, corprench 6
-Figura criaretangulo( int* id, double* x, double* y, double* w, double* h, char* corborda, char* corprench);        //parametros: id, x, y, w, h, corborda, corprench 7
-Figura criatxt(int* id, double* x, double* y, char* anc, char* cor, char* txto);                                    //parametros: id, x, y, anc, cor, txto 6
-Figura crialinha( int* id, double* x, double* y, double* x2, double* y2, char* cor);                                //parametros: id, x, y, x2, y2, cor 6
+
+/* cria a forma com as informacoes obtidas nos gets */
+
+enum FORMAS
+{
+    CIRCULO,
+    RETANGULO,
+    TEXTO,
+    LINHA
+};
+
+Figura criacirculo(int id, double x, double y, double raio, char *corborda, char *corprench);
+Figura criaretangulo(int id, double x, double y, double w, double h, char *corborda, char *corprench);
+Figura criatxt(int id, double x, double y, char *corborda, char* corprench, char a, char *txto);
+Figura crialinha(int id, double x, double y, double x2, double y2, char *corborda);
 
 #endif
 

@@ -13,6 +13,13 @@ typedef struct lst {
     No *fim;
 } Lst;
 
+void freeLST(void* nocrorrente) {
+    No *aux = nocrorrente;
+    while (aux != NULL) {
+       return;
+    }
+    free(aux);                          //libera o no
+}
 
 Lista createLista(int capacidade){
     Lst *L = calloc(1, sizeof(Lst));
