@@ -17,7 +17,6 @@ Figura criacirculo(int id, double x, double y, double raio, char *corborda, char
     f->x = x;
     f->y = y;
     f->raio = raio;
-    f->raio = raio;
     strcpy(f->corborda, corborda);
     strcpy(f->corprench, corprench);
     return f;
